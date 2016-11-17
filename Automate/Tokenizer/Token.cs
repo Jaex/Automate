@@ -34,16 +34,16 @@ namespace Automate
         {
         }
 
-        public Token(TokenType type, string text, int startPosition)
+        public Token(TokenType type, string text, int position)
         {
             Type = type;
             Text = text;
-            Position = startPosition;
+            Position = position;
         }
 
         public override string ToString()
         {
-            return string.Format("Type: {0}, Position: {1}, Text: {2}", Type, Position, Text);
+            return $"Type: {Type}, Position: {Position}, Text: {Text}";
         }
     }
 }

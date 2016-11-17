@@ -28,9 +28,9 @@ namespace Automate
 {
     public class BetweenTagsResult
     {
-        public List<Token> TokenList;
-        public int StartIndex;
-        public int EndIndex;
-        public bool Status;
+        public bool Status { get; set; }
+        public List<Token> Tokens { get; set; }
+        public int StartIndex { get; set; }
+        public int EndIndex { get; set; }
     }
 }

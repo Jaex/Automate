@@ -219,8 +219,8 @@ namespace Automate
         public static BetweenTagsResult GetBetweenTags(List<Token> tokens, string startTag, string endTag, int startIndex = 0)
         {
             BetweenTagsResult result = new BetweenTagsResult();
+            result.Tokens = new List<Token>();
             result.StartIndex = startIndex;
-            result.TokenList = new List<Token>();
 
             int depth = 0;
             bool isStartFound = false;
@@ -262,7 +262,7 @@ namespace Automate
 
                 if (isStartFound)
                 {
-                    result.TokenList.Add(token);
+                    result.Tokens.Add(token);
                 }
             }
 

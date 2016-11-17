@@ -22,6 +22,7 @@
 
 #endregion License Information (GPL v3)
 
+using Automate.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -156,32 +157,7 @@ namespace Automate
 
         private void SetExample()
         {
-            rtbInput.Text = @"""This is comment""
-Wait 3000
-Call KeyboardFunctions
-Call MouseFunctions
-""You can use 0 to loop forever""
-3 Call LoopTest
-5 KeyPress Enter
-
-Func KeyboardFunctions
-KeyDown Space
-KeyUp Space
-KeyPress A
-KeyPress Ctrl Shift Alt A
-KeyPressText ""Test 123""
-
-Func MouseFunctions
-MouseMove 300 250
-MouseDown Left
-MouseUp Left
-MouseClick Right
-MouseClick 100 450 Left
-MouseWheel 120
-
-Func LoopTest
-Wait 1000
-KeyPressText ""Loop""";
+            rtbInput.Text = Resources.ExampleScript;
         }
 
         private void btnRun_Click(object sender, EventArgs e)

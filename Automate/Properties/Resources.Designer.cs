@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Automate.Properties
-{
-
-
+namespace Automate.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,49 +22,75 @@ namespace Automate.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    internal class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Automate.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;This is comment&quot;
+        ///Wait 3000
+        ///Call KeyboardFunctions
+        ///Call MouseFunctions
+        ///&quot;You can use 0 to loop forever&quot;
+        ///3 Call LoopTest
+        ///5 KeyPress Enter
+        ///
+        ///Func KeyboardFunctions
+        ///KeyDown Space
+        ///KeyUp Space
+        ///KeyPress A
+        ///KeyPress Ctrl Shift Alt A
+        ///KeyPressText &quot;Test 123&quot;
+        ///
+        ///Func MouseFunctions
+        ///MouseMove 300 250
+        ///MouseDown Left
+        ///MouseUp Left
+        ///MouseClick Right
+        ///MouseClick 100 450 Left
+        ///MouseWheel 120
+        ///
+        ///Func LoopTest
+        ///Wait 1000
+        ///KeyPressText &quot;Loop&quot;.
+        /// </summary>
+        internal static string ExampleScript {
+            get {
+                return ResourceManager.GetString("ExampleScript", resourceCulture);
             }
         }
     }
