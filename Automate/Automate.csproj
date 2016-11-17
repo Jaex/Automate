@@ -44,11 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions\Function.cs" />
+    <Compile Include="Functions\Function_Call.cs" />
+    <Compile Include="Functions\Function_KeyDown.cs" />
+    <Compile Include="Functions\Function_KeyPress.cs" />
+    <Compile Include="Functions\Function_KeyPressText.cs" />
+    <Compile Include="Functions\Function_KeyUp.cs" />
+    <Compile Include="Functions\Function_Method.cs" />
+    <Compile Include="Functions\Function_MouseClick.cs" />
+    <Compile Include="Functions\Function_MouseDown.cs" />
+    <Compile Include="Functions\Function_MouseMove.cs" />
+    <Compile Include="Functions\Function_MouseUp.cs" />
+    <Compile Include="Functions\Function_MouseWheel.cs" />
+    <Compile Include="Functions\Function_Wait.cs" />
     <Compile Include="Tokenizer\BetweenTagsResult.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="FunctionManager.cs" />
-    <Compile Include="Functions.cs" />
+    <Compile Include="Functions\FunctionManager.cs" />
     <Compile Include="Input\InputHelpers.cs" />
     <Compile Include="Input\InputManager.cs" />
     <Compile Include="Forms\MainForm.cs">
@@ -84,7 +96,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ExampleScript.txt" />
+    <Content Include="Scripts\ExampleScript.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
