@@ -36,13 +36,13 @@ namespace Automate
     {
         public static bool IsRunning { get; private set; }
 
-        public List<ScriptInfo> Scripts { get; private set; }
+        public List<ScriptInfo> Scripts { get; private set; } = new List<ScriptInfo>();
 
         private FunctionManager functionManager = new FunctionManager();
         private Tokenizer tokenizer = new Tokenizer();
         private bool closing;
 
-        public MainForm()
+        public MainForm(List<ScriptInfo> scripts = null)
         {
             InitializeComponent();
             //TODO: Icon = Resources.Icon;
@@ -51,15 +51,15 @@ namespace Automate
             tokenizer.Keywords = FunctionManager.Functions.Select(x => x.Key).ToArray();
             cbFunctions.Items.AddRange(tokenizer.Keywords);
             cbKeys.Items.AddRange(Enum.GetNames(typeof(Keys)).Skip(1).ToArray());
-        }
 
-        public MainForm(List<ScriptInfo> scripts) : this()
-        {
-            Scripts = scripts;
-
-            foreach (ScriptInfo scriptInfo in Scripts)
+            if (scripts != null)
             {
-                AddScript(scriptInfo);
+                Scripts = scripts;
+
+                foreach (ScriptInfo scriptInfo in Scripts)
+                {
+                    AddScriptToList(scriptInfo);
+                }
             }
 
             if (lvScripts.Items.Count > 0)
@@ -74,7 +74,7 @@ namespace Automate
             Tokenize();
         }
 
-        private void AddScript(ScriptInfo scriptInfo)
+        private void AddScriptToList(ScriptInfo scriptInfo)
         {
             lvScripts.Items.Add(scriptInfo.Name).Tag = scriptInfo;
         }
@@ -253,8 +253,9 @@ KeyPressText ""Loop""";
                     Script = rtbInput.Text,
                     LineDelay = (int)nudLineDelay.Value
                 };
+
                 Scripts.Add(scriptInfo);
-                AddScript(scriptInfo);
+                AddScriptToList(scriptInfo);
             }
         }
 
