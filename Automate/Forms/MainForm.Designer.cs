@@ -52,7 +52,7 @@
             // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(160, 8);
+            this.btnRun.Location = new System.Drawing.Point(160, 456);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(168, 24);
             this.btnRun.TabIndex = 1;
@@ -79,7 +79,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pInput.Controls.Add(this.rtbInput);
-            this.pInput.Location = new System.Drawing.Point(160, 88);
+            this.pInput.Location = new System.Drawing.Point(160, 56);
             this.pInput.Name = "pInput";
             this.pInput.Padding = new System.Windows.Forms.Padding(3);
             this.pInput.Size = new System.Drawing.Size(512, 392);
@@ -89,7 +89,7 @@
             // 
             this.cbFunctions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFunctions.FormattingEnabled = true;
-            this.cbFunctions.Location = new System.Drawing.Point(160, 56);
+            this.cbFunctions.Location = new System.Drawing.Point(160, 24);
             this.cbFunctions.Name = "cbFunctions";
             this.cbFunctions.Size = new System.Drawing.Size(168, 21);
             this.cbFunctions.TabIndex = 4;
@@ -98,7 +98,7 @@
             // lblFunctions
             // 
             this.lblFunctions.AutoSize = true;
-            this.lblFunctions.Location = new System.Drawing.Point(157, 40);
+            this.lblFunctions.Location = new System.Drawing.Point(157, 8);
             this.lblFunctions.Name = "lblFunctions";
             this.lblFunctions.Size = new System.Drawing.Size(56, 13);
             this.lblFunctions.TabIndex = 3;
@@ -153,7 +153,7 @@
             // 
             // btnAddMouseMove
             // 
-            this.btnAddMouseMove.Location = new System.Drawing.Point(512, 54);
+            this.btnAddMouseMove.Location = new System.Drawing.Point(512, 22);
             this.btnAddMouseMove.Name = "btnAddMouseMove";
             this.btnAddMouseMove.Size = new System.Drawing.Size(160, 24);
             this.btnAddMouseMove.TabIndex = 10;
@@ -164,7 +164,7 @@
             // lblLineDelay
             // 
             this.lblLineDelay.AutoSize = true;
-            this.lblLineDelay.Location = new System.Drawing.Point(333, 14);
+            this.lblLineDelay.Location = new System.Drawing.Point(333, 462);
             this.lblLineDelay.Name = "lblLineDelay";
             this.lblLineDelay.Size = new System.Drawing.Size(58, 13);
             this.lblLineDelay.TabIndex = 11;
@@ -177,7 +177,7 @@
             0,
             0,
             0});
-            this.nudLineDelay.Location = new System.Drawing.Point(392, 10);
+            this.nudLineDelay.Location = new System.Drawing.Point(392, 458);
             this.nudLineDelay.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -196,7 +196,7 @@
             // lblLineDelayMiliseconds
             // 
             this.lblLineDelayMiliseconds.AutoSize = true;
-            this.lblLineDelayMiliseconds.Location = new System.Drawing.Point(485, 14);
+            this.lblLineDelayMiliseconds.Location = new System.Drawing.Point(485, 462);
             this.lblLineDelayMiliseconds.Name = "lblLineDelayMiliseconds";
             this.lblLineDelayMiliseconds.Size = new System.Drawing.Size(20, 13);
             this.lblLineDelayMiliseconds.TabIndex = 13;
@@ -205,7 +205,7 @@
             // lblKeys
             // 
             this.lblKeys.AutoSize = true;
-            this.lblKeys.Location = new System.Drawing.Point(333, 40);
+            this.lblKeys.Location = new System.Drawing.Point(333, 8);
             this.lblKeys.Name = "lblKeys";
             this.lblKeys.Size = new System.Drawing.Size(33, 13);
             this.lblKeys.TabIndex = 14;
@@ -215,7 +215,7 @@
             // 
             this.cbKeys.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbKeys.FormattingEnabled = true;
-            this.cbKeys.Location = new System.Drawing.Point(336, 56);
+            this.cbKeys.Location = new System.Drawing.Point(336, 24);
             this.cbKeys.Name = "cbKeys";
             this.cbKeys.Size = new System.Drawing.Size(168, 21);
             this.cbKeys.TabIndex = 15;

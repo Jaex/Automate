@@ -22,6 +22,7 @@
 
 #endregion License Information (GPL v3)
 
+using ShareX.HelpersLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,40 +50,43 @@ namespace Automate
         public List<Function> FunctionList { get; private set; }
         public int LineDelay { get; set; }
 
-        private bool stopRequest;
+        private bool stopRequested;
 
-        public Function GetFunction(string name, string[] parameters)
+        public void Start()
         {
-            if (Functions.ContainsKey(name))
+            if (FunctionList != null)
             {
-                Function func = (Function)Activator.CreateInstance(Functions[name]);
-                func.Name = name;
-                func.Parameters = parameters;
-                return func;
+                stopRequested = false;
+                Run();
             }
-
-            return null;
         }
 
-        public int FindFunctionIndex(string name)
+        public void Start(string script)
         {
-            for (int i = 0; i < FunctionList.Count; i++)
-            {
-                Function function = FunctionList[i];
-
-                if (function != null && function.GetType() == typeof(Function) && function.Parameters[0].
-                    Equals(name, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return i;
-                }
-            }
-
-            return -1;
+            Compile(script);
+            Start();
         }
 
-        public bool Compile(string[] lines)
+        public void Start(ScriptInfo scriptInfo)
+        {
+            if (scriptInfo != null)
+            {
+                LineDelay = scriptInfo.LineDelay;
+                Compile(scriptInfo.Script);
+                Start();
+            }
+        }
+
+        public void Stop()
+        {
+            stopRequested = true;
+        }
+
+        public bool Compile(string script)
         {
             FunctionList = new List<Function>();
+
+            string[] lines = script.Lines();
 
             foreach (string line in lines)
             {
@@ -136,23 +140,9 @@ namespace Automate
             return true;
         }
 
-        public void Start()
+        public void Run(int startIndex = 0)
         {
-            if (FunctionList != null)
-            {
-                stopRequest = false;
-                Run(0);
-            }
-        }
-
-        public void Stop()
-        {
-            stopRequest = true;
-        }
-
-        public void Run(int startIndex)
-        {
-            for (int i = startIndex; !stopRequest && i < FunctionList.Count; i++)
+            for (int i = startIndex; !stopRequested && i < FunctionList.Count; i++)
             {
                 Function function = FunctionList[i];
 
@@ -163,19 +153,48 @@ namespace Automate
 
                 if (function.Loop <= 0)
                 {
-                    while (!stopRequest)
+                    while (!stopRequested)
                     {
                         function.Run();
                     }
                 }
                 else
                 {
-                    for (int count = 0; !stopRequest && count < function.Loop; count++)
+                    for (int count = 0; !stopRequested && count < function.Loop; count++)
                     {
                         function.Run();
                     }
                 }
             }
+        }
+
+        public Function GetFunction(string name, string[] parameters)
+        {
+            if (Functions.ContainsKey(name))
+            {
+                Function func = (Function)Activator.CreateInstance(Functions[name]);
+                func.Name = name;
+                func.Parameters = parameters;
+                return func;
+            }
+
+            return null;
+        }
+
+        public int FindFunctionIndex(string name)
+        {
+            for (int i = 0; i < FunctionList.Count; i++)
+            {
+                Function function = FunctionList[i];
+
+                if (function != null && function.GetType() == typeof(Function) && function.Parameters[0].
+                    Equals(name, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
     }
 }

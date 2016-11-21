@@ -42,6 +42,7 @@ namespace Automate
 
         private FunctionManager functionManager = new FunctionManager();
         private Tokenizer tokenizer = new Tokenizer();
+        private KeyboardHook keyboardHook;
         private bool closing;
 
         public MainForm(List<ScriptInfo> scripts = null)
@@ -74,6 +75,20 @@ namespace Automate
             }
 
             Tokenize();
+
+            keyboardHook = new KeyboardHook();
+            keyboardHook.KeyDown += KeyboardHook_KeyDown;
+        }
+
+        private void KeyboardHook_KeyDown(object sender, KeyEventArgs e)
+        {
+            foreach (ScriptInfo scriptInfo in Scripts)
+            {
+                if (scriptInfo.Hotkey == e.KeyData)
+                {
+                    Start(scriptInfo);
+                }
+            }
         }
 
         private void AddScriptToList(ScriptInfo scriptInfo)
@@ -136,18 +151,17 @@ namespace Automate
             rtbInput.EndUpdate();
         }
 
-        public void Start()
+        public void Start(ScriptInfo scriptInfo)
         {
             if (!IsRunning)
             {
                 IsRunning = true;
                 btnRun.Text = "Stop";
-                string[] lines = rtbInput.Lines;
-                functionManager.LineDelay = (int)nudLineDelay.Value;
+
                 BackgroundWorker bw = new BackgroundWorker();
                 bw.DoWork += bw_DoWork;
                 bw.RunWorkerCompleted += bw_RunWorkerCompleted;
-                bw.RunWorkerAsync(lines);
+                bw.RunWorkerAsync(scriptInfo);
             }
         }
 
@@ -161,26 +175,13 @@ namespace Automate
             rtbInput.Text = Resources.ExampleScript;
         }
 
-        private void btnRun_Click(object sender, EventArgs e)
-        {
-            if (IsRunning)
-            {
-                Stop();
-            }
-            else
-            {
-                Start();
-            }
-        }
-
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-            string[] lines = e.Argument as string[];
+            ScriptInfo scriptInfo = e.Argument as ScriptInfo;
 
             try
             {
-                functionManager.Compile(lines);
-                functionManager.Start();
+                functionManager.Start(scriptInfo);
                 Thread.Sleep(100);
             }
             catch (Exception ex)
@@ -197,6 +198,24 @@ namespace Automate
             {
                 btnRun.Text = "Start";
                 this.ForceActivate();
+            }
+        }
+
+        private void btnRun_Click(object sender, EventArgs e)
+        {
+            if (IsRunning)
+            {
+                Stop();
+            }
+            else
+            {
+                ScriptInfo scriptInfo = new ScriptInfo()
+                {
+                    Script = rtbInput.Text,
+                    LineDelay = (int)nudLineDelay.Value
+                };
+
+                Start(scriptInfo);
             }
         }
 

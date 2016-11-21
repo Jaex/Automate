@@ -22,12 +22,15 @@
 
 #endregion License Information (GPL v3)
 
+using System.Windows.Forms;
+
 namespace Automate
 {
     public class ScriptInfo
     {
         public string Name { get; set; }
         public string Script { get; set; }
+        public Keys Hotkey { get; set; }
         public int LineDelay { get; set; }
     }
 }
