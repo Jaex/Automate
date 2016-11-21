@@ -22,6 +22,8 @@
 
 #endregion License Information (GPL v3)
 
+using ShareX.HelpersLib;
+
 namespace Automate
 {
     public class Function_MouseMove : Function_Method

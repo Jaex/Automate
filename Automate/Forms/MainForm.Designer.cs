@@ -44,7 +44,7 @@
             this.lblLineDelayMiliseconds = new System.Windows.Forms.Label();
             this.lblKeys = new System.Windows.Forms.Label();
             this.cbKeys = new System.Windows.Forms.ComboBox();
-            this.lvScripts = new Automate.MyListView();
+            this.lvScripts = new ShareX.HelpersLib.MyListView();
             this.chScriptName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLineDelay)).BeginInit();
@@ -286,7 +286,7 @@
         private System.Windows.Forms.ComboBox cbFunctions;
         private System.Windows.Forms.Label lblFunctions;
         private System.Windows.Forms.Button btnLoadExample;
-        private Automate.MyListView lvScripts;
+        private ShareX.HelpersLib.MyListView lvScripts;
         private System.Windows.Forms.TextBox txtScriptName;
         private System.Windows.Forms.Button btnSaveScript;
         private System.Windows.Forms.Label lblScriptName;

@@ -23,6 +23,7 @@
 #endregion License Information (GPL v3)
 
 using Automate.Properties;
+using ShareX.HelpersLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
