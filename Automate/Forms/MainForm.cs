@@ -40,7 +40,7 @@ namespace Automate
 
         public List<ScriptInfo> Scripts { get; private set; } = new List<ScriptInfo>();
 
-        private FunctionManager functionManager = new FunctionManager();
+        private ScriptManager functionManager = new ScriptManager();
         private Tokenizer tokenizer = new Tokenizer();
         private KeyboardHook keyboardHook;
         private bool closing;
@@ -51,7 +51,7 @@ namespace Automate
             //TODO: Icon = Resources.Icon;
 
             rtbInput.AddContextMenu();
-            tokenizer.Keywords = FunctionManager.Functions.Select(x => x.Key).ToArray();
+            tokenizer.Keywords = ScriptManager.Functions.Select(x => x.Key).ToArray();
             cbFunctions.Items.AddRange(tokenizer.Keywords);
             cbKeys.Items.AddRange(Enum.GetNames(typeof(Keys)).Skip(1).ToArray());
 
@@ -82,11 +82,15 @@ namespace Automate
 
         private void KeyboardHook_KeyDown(object sender, KeyEventArgs e)
         {
+            if (btnHotkey.EditingHotkey) return;
+
             foreach (ScriptInfo scriptInfo in Scripts)
             {
                 if (scriptInfo.Hotkey == e.KeyData)
                 {
                     Start(scriptInfo);
+                    e.Handled = true;
+                    break;
                 }
             }
         }
@@ -247,7 +251,8 @@ namespace Automate
                 {
                     Name = scriptName,
                     Script = rtbInput.Text,
-                    LineDelay = (int)nudLineDelay.Value
+                    LineDelay = (int)nudLineDelay.Value,
+                    Hotkey = btnHotkey.HotkeyInfo.Hotkey
                 };
 
                 Scripts.Add(scriptInfo);
@@ -312,6 +317,7 @@ namespace Automate
         private void AutomateForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             closing = true;
+            keyboardHook.Dispose();
             Stop();
         }
     }

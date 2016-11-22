@@ -44,8 +44,10 @@
             this.lblLineDelayMiliseconds = new System.Windows.Forms.Label();
             this.lblKeys = new System.Windows.Forms.Label();
             this.cbKeys = new System.Windows.Forms.ComboBox();
+            this.lblHotkey = new System.Windows.Forms.Label();
             this.lvScripts = new ShareX.HelpersLib.MyListView();
             this.chScriptName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnHotkey = new ShareX.HelpersLib.Controls.HotkeySelectionButton();
             this.pInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLineDelay)).BeginInit();
             this.SuspendLayout();
@@ -124,7 +126,7 @@
             // 
             // btnSaveScript
             // 
-            this.btnSaveScript.Location = new System.Drawing.Point(8, 48);
+            this.btnSaveScript.Location = new System.Drawing.Point(8, 96);
             this.btnSaveScript.Name = "btnSaveScript";
             this.btnSaveScript.Size = new System.Drawing.Size(72, 24);
             this.btnSaveScript.TabIndex = 7;
@@ -143,7 +145,7 @@
             // 
             // btnRemoveScript
             // 
-            this.btnRemoveScript.Location = new System.Drawing.Point(80, 48);
+            this.btnRemoveScript.Location = new System.Drawing.Point(80, 96);
             this.btnRemoveScript.Name = "btnRemoveScript";
             this.btnRemoveScript.Size = new System.Drawing.Size(72, 24);
             this.btnRemoveScript.TabIndex = 9;
@@ -221,6 +223,15 @@
             this.cbKeys.TabIndex = 15;
             this.cbKeys.SelectionChangeCommitted += new System.EventHandler(this.cbKeys_SelectionChangeCommitted);
             // 
+            // lblHotkey
+            // 
+            this.lblHotkey.AutoSize = true;
+            this.lblHotkey.Location = new System.Drawing.Point(5, 48);
+            this.lblHotkey.Name = "lblHotkey";
+            this.lblHotkey.Size = new System.Drawing.Size(44, 13);
+            this.lblHotkey.TabIndex = 1;
+            this.lblHotkey.Text = "Hotkey:";
+            // 
             // lvScripts
             // 
             this.lvScripts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -231,10 +242,10 @@
             this.lvScripts.FullRowSelect = true;
             this.lvScripts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lvScripts.HideSelection = false;
-            this.lvScripts.Location = new System.Drawing.Point(8, 80);
+            this.lvScripts.Location = new System.Drawing.Point(8, 128);
             this.lvScripts.MultiSelect = false;
             this.lvScripts.Name = "lvScripts";
-            this.lvScripts.Size = new System.Drawing.Size(143, 368);
+            this.lvScripts.Size = new System.Drawing.Size(143, 320);
             this.lvScripts.TabIndex = 5;
             this.lvScripts.UseCompatibleStateImageBehavior = false;
             this.lvScripts.View = System.Windows.Forms.View.Details;
@@ -245,12 +256,22 @@
             this.chScriptName.Text = "Name";
             this.chScriptName.Width = 130;
             // 
+            // btnHotkey
+            // 
+            this.btnHotkey.Location = new System.Drawing.Point(8, 64);
+            this.btnHotkey.Name = "btnHotkey";
+            this.btnHotkey.Size = new System.Drawing.Size(143, 23);
+            this.btnHotkey.TabIndex = 1;
+            this.btnHotkey.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(682, 489);
+            this.Controls.Add(this.btnHotkey);
+            this.Controls.Add(this.lblHotkey);
             this.Controls.Add(this.btnLoadExample);
             this.Controls.Add(this.lblKeys);
             this.Controls.Add(this.cbKeys);
@@ -298,9 +319,8 @@
         private System.Windows.Forms.Label lblLineDelayMiliseconds;
         private System.Windows.Forms.Label lblKeys;
         private System.Windows.Forms.ComboBox cbKeys;
-
-
-
+        private System.Windows.Forms.Label lblHotkey;
+        private ShareX.HelpersLib.Controls.HotkeySelectionButton btnHotkey;
     }
 }
 

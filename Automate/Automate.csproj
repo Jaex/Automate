@@ -59,7 +59,7 @@
     <Compile Include="Functions\Function_Wait.cs" />
     <Compile Include="Tokenizer\BetweenTagsResult.cs" />
     <Compile Include="Enum.cs" />
-    <Compile Include="Functions\FunctionManager.cs" />
+    <Compile Include="ScriptManager.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

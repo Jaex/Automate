@@ -30,7 +30,7 @@ namespace Automate
         public string[] Parameters { get; set; }
         public int Loop { get; set; }
 
-        public FunctionManager FunctionManager { protected get; set; }
+        public ScriptManager FunctionManager { protected get; set; }
 
         public Function()
         {

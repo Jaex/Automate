@@ -29,7 +29,7 @@ using System.Linq;
 
 namespace Automate
 {
-    public class FunctionManager
+    public class ScriptManager
     {
         public static readonly Dictionary<string, Type> Functions = new Dictionary<string, Type>()
         {
