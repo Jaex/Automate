@@ -285,7 +285,6 @@ namespace Automate
                     btnHotkey.UpdateHotkey(new HotkeyInfo(scriptInfo.Hotkey));
                     rtbInput.Text = scriptInfo.Script;
                     nudLineDelay.SetValue(scriptInfo.LineDelay);
-                    Tokenize();
                 }
             }
         }
@@ -308,7 +307,7 @@ namespace Automate
                 Point position = Cursor.Position;
                 this.InvokeSafe(() =>
                 {
-                    rtbInput.SelectedText = string.Format("MouseMove {0} {1}\r\n", position.X, position.Y);
+                    rtbInput.SelectedText = $"MouseMove {position.X} {position.Y}\r\n";
                     rtbInput.Focus();
                 });
             });
