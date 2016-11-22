@@ -45,15 +45,16 @@
             this.lblKeys = new System.Windows.Forms.Label();
             this.cbKeys = new System.Windows.Forms.ComboBox();
             this.lblHotkey = new System.Windows.Forms.Label();
+            this.btnHotkey = new ShareX.HelpersLib.Controls.HotkeySelectionButton();
             this.lvScripts = new ShareX.HelpersLib.MyListView();
             this.chScriptName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnHotkey = new ShareX.HelpersLib.Controls.HotkeySelectionButton();
             this.pInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLineDelay)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRun
             // 
+            this.btnRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRun.Location = new System.Drawing.Point(160, 456);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(168, 24);
@@ -165,6 +166,7 @@
             // 
             // lblLineDelay
             // 
+            this.lblLineDelay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblLineDelay.AutoSize = true;
             this.lblLineDelay.Location = new System.Drawing.Point(333, 462);
             this.lblLineDelay.Name = "lblLineDelay";
@@ -174,6 +176,7 @@
             // 
             // nudLineDelay
             // 
+            this.nudLineDelay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nudLineDelay.Increment = new decimal(new int[] {
             100,
             0,
@@ -197,6 +200,7 @@
             // 
             // lblLineDelayMiliseconds
             // 
+            this.lblLineDelayMiliseconds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblLineDelayMiliseconds.AutoSize = true;
             this.lblLineDelayMiliseconds.Location = new System.Drawing.Point(485, 462);
             this.lblLineDelayMiliseconds.Name = "lblLineDelayMiliseconds";
@@ -232,6 +236,14 @@
             this.lblHotkey.TabIndex = 1;
             this.lblHotkey.Text = "Hotkey:";
             // 
+            // btnHotkey
+            // 
+            this.btnHotkey.Location = new System.Drawing.Point(8, 64);
+            this.btnHotkey.Name = "btnHotkey";
+            this.btnHotkey.Size = new System.Drawing.Size(143, 23);
+            this.btnHotkey.TabIndex = 1;
+            this.btnHotkey.UseVisualStyleBackColor = true;
+            // 
             // lvScripts
             // 
             this.lvScripts.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -255,14 +267,6 @@
             // 
             this.chScriptName.Text = "Name";
             this.chScriptName.Width = 130;
-            // 
-            // btnHotkey
-            // 
-            this.btnHotkey.Location = new System.Drawing.Point(8, 64);
-            this.btnHotkey.Name = "btnHotkey";
-            this.btnHotkey.Size = new System.Drawing.Size(143, 23);
-            this.btnHotkey.TabIndex = 1;
-            this.btnHotkey.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

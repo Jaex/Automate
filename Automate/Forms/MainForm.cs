@@ -244,6 +244,7 @@ namespace Automate
             {
                 scriptInfo.Script = rtbInput.Text;
                 scriptInfo.LineDelay = (int)nudLineDelay.Value;
+                scriptInfo.Hotkey = btnHotkey.HotkeyInfo.Hotkey;
             }
             else
             {
@@ -281,6 +282,7 @@ namespace Automate
                 if (scriptInfo != null)
                 {
                     txtScriptName.Text = scriptInfo.Name;
+                    btnHotkey.UpdateHotkey(new HotkeyInfo(scriptInfo.Hotkey));
                     rtbInput.Text = scriptInfo.Script;
                     nudLineDelay.SetValue(scriptInfo.LineDelay);
                     Tokenize();
