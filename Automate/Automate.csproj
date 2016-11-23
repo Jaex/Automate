@@ -57,6 +57,7 @@
     <Compile Include="Functions\Function_MouseUp.cs" />
     <Compile Include="Functions\Function_MouseWheel.cs" />
     <Compile Include="Functions\Function_Wait.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Tokenizer\BetweenTagsResult.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="ScriptManager.cs" />

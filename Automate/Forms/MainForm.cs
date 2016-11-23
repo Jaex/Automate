@@ -38,14 +38,12 @@ namespace Automate
     {
         public static bool IsRunning { get; private set; }
 
-        public List<ScriptInfo> Scripts { get; private set; } = new List<ScriptInfo>();
-
         private ScriptManager functionManager = new ScriptManager();
         private Tokenizer tokenizer = new Tokenizer();
         private KeyboardHook keyboardHook;
         private bool closing;
 
-        public MainForm(List<ScriptInfo> scripts = null)
+        public MainForm()
         {
             InitializeComponent();
             //TODO: Icon = Resources.Icon;
@@ -55,14 +53,14 @@ namespace Automate
             cbFunctions.Items.AddRange(tokenizer.Keywords);
             cbKeys.Items.AddRange(Enum.GetNames(typeof(Keys)).Skip(1).ToArray());
 
-            if (scripts != null)
+            if (Program.Settings.Scripts == null)
             {
-                Scripts = scripts;
+                Program.Settings.Scripts = new List<Automate.ScriptInfo>();
+            }
 
-                foreach (ScriptInfo scriptInfo in Scripts)
-                {
-                    AddScriptToList(scriptInfo);
-                }
+            foreach (ScriptInfo scriptInfo in Program.Settings.Scripts)
+            {
+                AddScriptToList(scriptInfo);
             }
 
             if (lvScripts.Items.Count > 0)
@@ -84,7 +82,7 @@ namespace Automate
         {
             if (btnHotkey.EditingHotkey) return;
 
-            foreach (ScriptInfo scriptInfo in Scripts)
+            foreach (ScriptInfo scriptInfo in Program.Settings.Scripts)
             {
                 if (scriptInfo.Hotkey == e.KeyData)
                 {
@@ -238,7 +236,7 @@ namespace Automate
                 return;
             }
 
-            ScriptInfo scriptInfo = Scripts.FirstOrDefault(x => x.Name.Equals(scriptName, StringComparison.InvariantCultureIgnoreCase));
+            ScriptInfo scriptInfo = Program.Settings.Scripts.FirstOrDefault(x => x.Name.Equals(scriptName, StringComparison.InvariantCultureIgnoreCase));
 
             if (scriptInfo != null)
             {
@@ -256,7 +254,7 @@ namespace Automate
                     Hotkey = btnHotkey.HotkeyInfo.Hotkey
                 };
 
-                Scripts.Add(scriptInfo);
+                Program.Settings.Scripts.Add(scriptInfo);
                 AddScriptToList(scriptInfo);
             }
         }
@@ -266,7 +264,7 @@ namespace Automate
             if (lvScripts.SelectedIndices.Count > 0)
             {
                 int index = lvScripts.SelectedIndices[0];
-                Scripts.RemoveAt(index);
+                Program.Settings.Scripts.RemoveAt(index);
                 lvScripts.Items.RemoveAt(index);
                 rtbInput.Clear();
                 txtScriptName.Clear();

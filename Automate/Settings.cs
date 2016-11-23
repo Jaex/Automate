@@ -1,7 +1,8 @@
 ﻿#region License Information (GPL v3)
 
 /*
-    Copyright (c) Jaex
+    ShareX - A program that allows you to take screenshots and share any file type
+    Copyright (c) 2007-2016 ShareX Team
 
     This program is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License
@@ -22,29 +23,16 @@
 
 #endregion License Information (GPL v3)
 
+using ShareX.HelpersLib;
 using System;
-using System.IO;
-using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Automate
 {
-    internal static class Program
+    public class Settings : SettingsBase<Settings>
     {
-        public static readonly string DefaultPersonalFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Automate");
-        public static readonly string SettingsFilePath = Path.Combine(DefaultPersonalFolder, "Settings.json");
-
-        public static Settings Settings { get; private set; }
-
-        [STAThread]
-        private static void Main()
-        {
-            Settings = Settings.Load(SettingsFilePath);
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
-
-            Settings.Save();
-        }
+        public List<ScriptInfo> Scripts { get; set; } = new List<ScriptInfo>();
     }
 }
