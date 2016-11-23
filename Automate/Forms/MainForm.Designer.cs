@@ -296,6 +296,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Automate";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AutomateForm_FormClosing);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.pInput.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudLineDelay)).EndInit();
             this.ResumeLayout(false);

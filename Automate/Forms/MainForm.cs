@@ -52,10 +52,23 @@ namespace Automate
             tokenizer.Keywords = ScriptManager.Functions.Select(x => x.Key).ToArray();
             cbFunctions.Items.AddRange(tokenizer.Keywords);
             cbKeys.Items.AddRange(Enum.GetNames(typeof(Keys)).Skip(1).ToArray());
+        }
 
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            UpdateControls();
+
+            keyboardHook = new KeyboardHook();
+            keyboardHook.KeyDown += KeyboardHook_KeyDown;
+
+            this.ForceActivate();
+        }
+
+        private void UpdateControls()
+        {
             if (Program.Settings.Scripts == null)
             {
-                Program.Settings.Scripts = new List<Automate.ScriptInfo>();
+                Program.Settings.Scripts = new List<ScriptInfo>();
             }
 
             foreach (ScriptInfo scriptInfo in Program.Settings.Scripts)
@@ -71,11 +84,6 @@ namespace Automate
             {
                 SetExample();
             }
-
-            Tokenize();
-
-            keyboardHook = new KeyboardHook();
-            keyboardHook.KeyDown += KeyboardHook_KeyDown;
         }
 
         private void KeyboardHook_KeyDown(object sender, KeyEventArgs e)
