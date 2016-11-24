@@ -61,6 +61,10 @@ namespace Automate
             keyboardHook = new KeyboardHook();
             keyboardHook.KeyDown += KeyboardHook_KeyDown;
 
+#if !DEBUG
+            Program.UpdateManager.ConfigureAutoUpdate();
+#endif
+
             this.ForceActivate();
         }
 

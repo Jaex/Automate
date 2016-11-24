@@ -22,6 +22,7 @@
 
 #endregion License Information (GPL v3)
 
+using ShareX.HelpersLib;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -34,11 +35,18 @@ namespace Automate
         public static readonly string SettingsFilePath = Path.Combine(DefaultPersonalFolder, "Settings.json");
 
         public static Settings Settings { get; private set; }
+        public static GitHubUpdateManager UpdateManager { get; private set; }
 
         [STAThread]
         private static void Main()
         {
             Settings = Settings.Load(SettingsFilePath);
+
+            UpdateManager = new GitHubUpdateManager("Jaex", "Automate")
+            {
+                AutoUpdateEnabled = true,
+                CheckPreReleaseUpdates = false
+            };
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
