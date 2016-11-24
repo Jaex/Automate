@@ -1,10 +1,8 @@
-﻿"This is comment"
-Wait 3000
+﻿Wait 3000
 Call KeyboardFunctions
 Call MouseFunctions
-"You can use 0 to loop forever"
 3 Call LoopTest
-5 KeyPress Enter
+5 KeyPress Z
 
 Func KeyboardFunctions
 KeyDown Space
@@ -23,4 +21,4 @@ MouseWheel 120
 
 Func LoopTest
 Wait 1000
-KeyPressText "Loop"
+KeyPressText "Test"
