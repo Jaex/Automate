@@ -107,7 +107,10 @@ namespace Automate
 
         private void AddScriptToList(ScriptInfo scriptInfo)
         {
-            lvScripts.Items.Add(scriptInfo.Name).Tag = scriptInfo;
+            ListViewItem lvi = new ListViewItem(scriptInfo.Name);
+            lvi.SubItems.Add(new HotkeyInfo(scriptInfo.Hotkey).ToString());
+            lvi.Tag = scriptInfo;
+            lvScripts.Items.Add(lvi);
         }
 
         private void rtbInput_TextChanged(object sender, EventArgs e)
