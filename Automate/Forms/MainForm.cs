@@ -176,6 +176,10 @@ namespace Automate
                 bw.RunWorkerCompleted += bw_RunWorkerCompleted;
                 bw.RunWorkerAsync(scriptInfo);
             }
+            else
+            {
+                Stop();
+            }
         }
 
         public void Stop()
