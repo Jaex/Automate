@@ -84,10 +84,6 @@ namespace Automate
             {
                 lvScripts.Items[0].Selected = true;
             }
-            else
-            {
-                SetExample();
-            }
         }
 
         private void KeyboardHook_KeyDown(object sender, KeyEventArgs e)
@@ -192,6 +188,19 @@ namespace Automate
             rtbInput.Text = Resources.ExampleScript;
         }
 
+        private void ResetFields()
+        {
+            foreach (ListViewItem lvi in lvScripts.SelectedItems)
+            {
+                lvi.Selected = false;
+            }
+
+            txtScriptName.Clear();
+            btnHotkey.Reset();
+            rtbInput.Clear();
+            nudLineDelay.Value = 1;
+        }
+
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             ScriptInfo scriptInfo = e.Argument as ScriptInfo;
@@ -234,6 +243,11 @@ namespace Automate
 
                 Start(scriptInfo);
             }
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            ResetFields();
         }
 
         private void btnLoadExample_Click(object sender, EventArgs e)

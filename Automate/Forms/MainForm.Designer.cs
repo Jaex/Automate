@@ -49,6 +49,7 @@
             this.lvScripts = new ShareX.HelpersLib.MyListView();
             this.chScriptName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chScriptHotkey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnNew = new System.Windows.Forms.Button();
             this.pInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLineDelay)).BeginInit();
             this.SuspendLayout();
@@ -111,9 +112,9 @@
             // btnLoadExample
             // 
             this.btnLoadExample.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnLoadExample.Location = new System.Drawing.Point(8, 456);
+            this.btnLoadExample.Location = new System.Drawing.Point(96, 8);
             this.btnLoadExample.Name = "btnLoadExample";
-            this.btnLoadExample.Size = new System.Drawing.Size(232, 24);
+            this.btnLoadExample.Size = new System.Drawing.Size(144, 24);
             this.btnLoadExample.TabIndex = 2;
             this.btnLoadExample.Text = "Load example script";
             this.btnLoadExample.UseVisualStyleBackColor = true;
@@ -121,14 +122,14 @@
             // 
             // txtScriptName
             // 
-            this.txtScriptName.Location = new System.Drawing.Point(8, 24);
+            this.txtScriptName.Location = new System.Drawing.Point(8, 56);
             this.txtScriptName.Name = "txtScriptName";
             this.txtScriptName.Size = new System.Drawing.Size(232, 20);
             this.txtScriptName.TabIndex = 6;
             // 
             // btnSaveScript
             // 
-            this.btnSaveScript.Location = new System.Drawing.Point(8, 96);
+            this.btnSaveScript.Location = new System.Drawing.Point(8, 128);
             this.btnSaveScript.Name = "btnSaveScript";
             this.btnSaveScript.Size = new System.Drawing.Size(112, 24);
             this.btnSaveScript.TabIndex = 7;
@@ -139,7 +140,7 @@
             // lblScriptName
             // 
             this.lblScriptName.AutoSize = true;
-            this.lblScriptName.Location = new System.Drawing.Point(5, 8);
+            this.lblScriptName.Location = new System.Drawing.Point(5, 40);
             this.lblScriptName.Name = "lblScriptName";
             this.lblScriptName.Size = new System.Drawing.Size(66, 13);
             this.lblScriptName.TabIndex = 8;
@@ -147,7 +148,7 @@
             // 
             // btnRemoveScript
             // 
-            this.btnRemoveScript.Location = new System.Drawing.Point(128, 96);
+            this.btnRemoveScript.Location = new System.Drawing.Point(128, 128);
             this.btnRemoveScript.Name = "btnRemoveScript";
             this.btnRemoveScript.Size = new System.Drawing.Size(112, 24);
             this.btnRemoveScript.TabIndex = 9;
@@ -231,7 +232,7 @@
             // lblHotkey
             // 
             this.lblHotkey.AutoSize = true;
-            this.lblHotkey.Location = new System.Drawing.Point(5, 48);
+            this.lblHotkey.Location = new System.Drawing.Point(5, 80);
             this.lblHotkey.Name = "lblHotkey";
             this.lblHotkey.Size = new System.Drawing.Size(44, 13);
             this.lblHotkey.TabIndex = 1;
@@ -239,7 +240,7 @@
             // 
             // btnHotkey
             // 
-            this.btnHotkey.Location = new System.Drawing.Point(8, 64);
+            this.btnHotkey.Location = new System.Drawing.Point(8, 96);
             this.btnHotkey.Name = "btnHotkey";
             this.btnHotkey.Size = new System.Drawing.Size(232, 23);
             this.btnHotkey.TabIndex = 1;
@@ -256,7 +257,7 @@
             this.lvScripts.FullRowSelect = true;
             this.lvScripts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvScripts.HideSelection = false;
-            this.lvScripts.Location = new System.Drawing.Point(8, 128);
+            this.lvScripts.Location = new System.Drawing.Point(8, 160);
             this.lvScripts.MultiSelect = false;
             this.lvScripts.Name = "lvScripts";
             this.lvScripts.Size = new System.Drawing.Size(232, 320);
@@ -273,6 +274,17 @@
             // chScriptHotkey
             // 
             this.chScriptHotkey.Text = "Hotkey";
+            this.chScriptHotkey.Width = 113;
+            // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(8, 8);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(80, 23);
+            this.btnNew.TabIndex = 1;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // MainForm
             // 
@@ -280,6 +292,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(769, 489);
+            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnHotkey);
             this.Controls.Add(this.lblHotkey);
             this.Controls.Add(this.btnLoadExample);
@@ -333,6 +346,7 @@
         private System.Windows.Forms.Label lblHotkey;
         private ShareX.HelpersLib.Controls.HotkeySelectionButton btnHotkey;
         private System.Windows.Forms.ColumnHeader chScriptHotkey;
+        private System.Windows.Forms.Button btnNew;
     }
 }
 
