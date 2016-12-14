@@ -111,7 +111,6 @@
             // 
             // btnLoadExample
             // 
-            this.btnLoadExample.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLoadExample.Location = new System.Drawing.Point(96, 8);
             this.btnLoadExample.Name = "btnLoadExample";
             this.btnLoadExample.Size = new System.Drawing.Size(144, 24);

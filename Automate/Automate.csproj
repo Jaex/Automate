@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -87,6 +90,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Icon.ico" />
     <Content Include="Scripts\ExampleScript.txt" />
   </ItemGroup>
   <ItemGroup>

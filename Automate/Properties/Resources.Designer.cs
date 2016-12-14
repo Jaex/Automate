@@ -61,13 +61,11 @@ namespace Automate.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;This is comment&quot;
-        ///Wait 3000
+        ///   Looks up a localized string similar to Wait 3000
         ///Call KeyboardFunctions
         ///Call MouseFunctions
-        ///&quot;You can use 0 to loop forever&quot;
         ///3 Call LoopTest
-        ///5 KeyPress Enter
+        ///5 KeyPress Z
         ///
         ///Func KeyboardFunctions
         ///KeyDown Space
@@ -86,11 +84,21 @@ namespace Automate.Properties {
         ///
         ///Func LoopTest
         ///Wait 1000
-        ///KeyPressText &quot;Loop&quot;.
+        ///KeyPressText &quot;Test&quot;.
         /// </summary>
         internal static string ExampleScript {
             get {
                 return ResourceManager.GetString("ExampleScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Icon {
+            get {
+                object obj = ResourceManager.GetObject("Icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

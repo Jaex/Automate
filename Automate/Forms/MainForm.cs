@@ -46,7 +46,7 @@ namespace Automate
         public MainForm()
         {
             InitializeComponent();
-            //TODO: Icon = Resources.Icon;
+            Icon = Resources.Icon;
 
             rtbInput.AddContextMenu();
             tokenizer.Keywords = ScriptManager.Functions.Select(x => x.Key).ToArray();
