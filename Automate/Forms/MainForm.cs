@@ -217,6 +217,11 @@ namespace Automate
 
             try
             {
+                if (Program.Settings.ScriptStartDelay > 0)
+                {
+                    Thread.Sleep(Program.Settings.ScriptStartDelay);
+                }
+
                 functionManager.Start(scriptInfo);
                 Thread.Sleep(100);
             }

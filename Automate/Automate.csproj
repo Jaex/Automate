@@ -66,6 +66,11 @@
     <Compile Include="Functions\Function_MouseUp.cs" />
     <Compile Include="Functions\Function_MouseWheel.cs" />
     <Compile Include="Functions\Function_Wait.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Tokenizer\BetweenTagsResult.cs" />
     <Compile Include="Enum.cs" />
@@ -89,19 +94,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.ico" />
     <None Include="Resources\GitHub.png" />
-    <Content Include="Scripts\ExampleScript.txt" />
+    <Content Include="Resources\ExampleScript.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ShareX\ShareX.HelpersLib\ShareX.HelpersLib.csproj">

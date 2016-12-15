@@ -172,7 +172,6 @@
             // 
             // lblLineDelay
             // 
-            this.lblLineDelay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblLineDelay.AutoSize = true;
             this.lblLineDelay.Location = new System.Drawing.Point(8, 128);
             this.lblLineDelay.Name = "lblLineDelay";
@@ -182,7 +181,6 @@
             // 
             // nudLineDelay
             // 
-            this.nudLineDelay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nudLineDelay.Increment = new decimal(new int[] {
             100,
             0,
@@ -201,9 +199,8 @@
             // 
             // lblLineDelayMiliseconds
             // 
-            this.lblLineDelayMiliseconds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblLineDelayMiliseconds.AutoSize = true;
-            this.lblLineDelayMiliseconds.Location = new System.Drawing.Point(165, 129);
+            this.lblLineDelayMiliseconds.Location = new System.Drawing.Point(168, 129);
             this.lblLineDelayMiliseconds.Name = "lblLineDelayMiliseconds";
             this.lblLineDelayMiliseconds.Size = new System.Drawing.Size(20, 13);
             this.lblLineDelayMiliseconds.TabIndex = 13;
@@ -307,6 +304,7 @@
             // 
             // btnSettings
             // 
+            this.btnSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSettings.Location = new System.Drawing.Point(424, 456);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(168, 24);

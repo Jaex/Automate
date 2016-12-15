@@ -1,4 +1,4 @@
-﻿Wait 3000
+﻿Wait 2000
 Call KeyboardFunctions
 Call MouseFunctions
 3 Call LoopTest

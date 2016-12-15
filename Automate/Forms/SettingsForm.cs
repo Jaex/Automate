@@ -41,12 +41,14 @@ namespace Automate
 
         private void UpdateControls()
         {
+            nudScriptStartDelay.Value = Program.Settings.ScriptStartDelay;
             cbAutoMinimizeMainWindow.Checked = Program.Settings.AutoMinimizeMainWindow;
             cbAutoShowMainWindow.Checked = Program.Settings.AutoShowMainWindow;
         }
 
         private void ApplySettings()
         {
+            Program.Settings.ScriptStartDelay = (int)nudScriptStartDelay.Value;
             Program.Settings.AutoMinimizeMainWindow = cbAutoMinimizeMainWindow.Checked;
             Program.Settings.AutoShowMainWindow = cbAutoShowMainWindow.Checked;
         }
