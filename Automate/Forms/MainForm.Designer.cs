@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnRun = new System.Windows.Forms.Button();
             this.rtbInput = new System.Windows.Forms.RichTextBox();
             this.pInput = new System.Windows.Forms.Panel();
@@ -50,8 +51,11 @@
             this.chScriptName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chScriptHotkey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnNew = new System.Windows.Forms.Button();
+            this.pbGitHub = new System.Windows.Forms.PictureBox();
+            this.ttMain = new System.Windows.Forms.ToolTip(this.components);
             this.pInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLineDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGitHub)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRun
@@ -285,12 +289,33 @@
             this.btnNew.UseVisualStyleBackColor = true;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
+            // pbGitHub
+            // 
+            this.pbGitHub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbGitHub.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbGitHub.Image = global::Automate.Properties.Resources.GitHub;
+            this.pbGitHub.Location = new System.Drawing.Point(743, 460);
+            this.pbGitHub.Name = "pbGitHub";
+            this.pbGitHub.Size = new System.Drawing.Size(16, 16);
+            this.pbGitHub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbGitHub.TabIndex = 16;
+            this.pbGitHub.TabStop = false;
+            this.ttMain.SetToolTip(this.pbGitHub, "Open GitHub web page");
+            this.pbGitHub.Click += new System.EventHandler(this.pbGitHub_Click);
+            // 
+            // ttMain
+            // 
+            this.ttMain.AutoPopDelay = 10000;
+            this.ttMain.InitialDelay = 100;
+            this.ttMain.ReshowDelay = 100;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(769, 489);
+            this.Controls.Add(this.pbGitHub);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnHotkey);
             this.Controls.Add(this.lblHotkey);
@@ -317,6 +342,7 @@
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.pInput.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nudLineDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbGitHub)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -346,6 +372,8 @@
         private ShareX.HelpersLib.Controls.HotkeySelectionButton btnHotkey;
         private System.Windows.Forms.ColumnHeader chScriptHotkey;
         private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.PictureBox pbGitHub;
+        private System.Windows.Forms.ToolTip ttMain;
     }
 }
 

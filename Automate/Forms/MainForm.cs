@@ -346,6 +346,11 @@ namespace Automate
             thread.Start();
         }
 
+        private void pbGitHub_Click(object sender, EventArgs e)
+        {
+            URLHelpers.OpenURL("https://github.com/Jaex/Automate");
+        }
+
         private void AutomateForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             closing = true;

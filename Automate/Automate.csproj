@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.ico" />
+    <None Include="Resources\GitHub.png" />
     <Content Include="Scripts\ExampleScript.txt" />
   </ItemGroup>
   <ItemGroup>
