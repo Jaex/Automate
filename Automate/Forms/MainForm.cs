@@ -332,14 +332,20 @@ namespace Automate
 
         private void btnAddMouseMove_Click(object sender, EventArgs e)
         {
+            btnAddMouseMove.Enabled = false;
+
             Thread thread = new Thread(() =>
             {
                 Thread.Sleep(2000);
-                Point position = Cursor.Position;
+
                 this.InvokeSafe(() =>
                 {
+                    Point position = Cursor.Position;
+
                     rtbInput.SelectedText = $"MouseMove {position.X} {position.Y}\r\n";
                     rtbInput.Focus();
+
+                    btnAddMouseMove.Enabled = true;
                 });
             });
 
