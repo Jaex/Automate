@@ -53,6 +53,7 @@
             this.btnNew = new System.Windows.Forms.Button();
             this.pbGitHub = new System.Windows.Forms.PictureBox();
             this.ttMain = new System.Windows.Forms.ToolTip(this.components);
+            this.btnSettings = new System.Windows.Forms.Button();
             this.pInput.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLineDelay)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGitHub)).BeginInit();
@@ -132,7 +133,7 @@
             // 
             // btnSaveScript
             // 
-            this.btnSaveScript.Location = new System.Drawing.Point(8, 128);
+            this.btnSaveScript.Location = new System.Drawing.Point(8, 152);
             this.btnSaveScript.Name = "btnSaveScript";
             this.btnSaveScript.Size = new System.Drawing.Size(112, 24);
             this.btnSaveScript.TabIndex = 7;
@@ -151,7 +152,7 @@
             // 
             // btnRemoveScript
             // 
-            this.btnRemoveScript.Location = new System.Drawing.Point(128, 128);
+            this.btnRemoveScript.Location = new System.Drawing.Point(128, 152);
             this.btnRemoveScript.Name = "btnRemoveScript";
             this.btnRemoveScript.Size = new System.Drawing.Size(112, 24);
             this.btnRemoveScript.TabIndex = 9;
@@ -173,7 +174,7 @@
             // 
             this.lblLineDelay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblLineDelay.AutoSize = true;
-            this.lblLineDelay.Location = new System.Drawing.Point(421, 462);
+            this.lblLineDelay.Location = new System.Drawing.Point(8, 128);
             this.lblLineDelay.Name = "lblLineDelay";
             this.lblLineDelay.Size = new System.Drawing.Size(58, 13);
             this.lblLineDelay.TabIndex = 11;
@@ -187,7 +188,7 @@
             0,
             0,
             0});
-            this.nudLineDelay.Location = new System.Drawing.Point(480, 458);
+            this.nudLineDelay.Location = new System.Drawing.Point(72, 125);
             this.nudLineDelay.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -197,17 +198,12 @@
             this.nudLineDelay.Size = new System.Drawing.Size(88, 20);
             this.nudLineDelay.TabIndex = 12;
             this.nudLineDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nudLineDelay.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // lblLineDelayMiliseconds
             // 
             this.lblLineDelayMiliseconds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblLineDelayMiliseconds.AutoSize = true;
-            this.lblLineDelayMiliseconds.Location = new System.Drawing.Point(573, 462);
+            this.lblLineDelayMiliseconds.Location = new System.Drawing.Point(165, 129);
             this.lblLineDelayMiliseconds.Name = "lblLineDelayMiliseconds";
             this.lblLineDelayMiliseconds.Size = new System.Drawing.Size(20, 13);
             this.lblLineDelayMiliseconds.TabIndex = 13;
@@ -260,10 +256,10 @@
             this.lvScripts.FullRowSelect = true;
             this.lvScripts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvScripts.HideSelection = false;
-            this.lvScripts.Location = new System.Drawing.Point(8, 160);
+            this.lvScripts.Location = new System.Drawing.Point(8, 184);
             this.lvScripts.MultiSelect = false;
             this.lvScripts.Name = "lvScripts";
-            this.lvScripts.Size = new System.Drawing.Size(232, 320);
+            this.lvScripts.Size = new System.Drawing.Size(232, 296);
             this.lvScripts.TabIndex = 5;
             this.lvScripts.UseCompatibleStateImageBehavior = false;
             this.lvScripts.View = System.Windows.Forms.View.Details;
@@ -309,12 +305,23 @@
             this.ttMain.InitialDelay = 100;
             this.ttMain.ReshowDelay = 100;
             // 
+            // btnSettings
+            // 
+            this.btnSettings.Location = new System.Drawing.Point(424, 456);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(168, 24);
+            this.btnSettings.TabIndex = 17;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(769, 489);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.pbGitHub);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnHotkey);
@@ -374,6 +381,7 @@
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.PictureBox pbGitHub;
         private System.Windows.Forms.ToolTip ttMain;
+        private System.Windows.Forms.Button btnSettings;
     }
 }
 

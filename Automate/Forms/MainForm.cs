@@ -234,7 +234,7 @@ namespace Automate
             {
                 btnRun.Text = "Start";
 
-                if (Program.Settings.AutoMinimizeMainWindow || Program.Settings.AutoShowMainWindow)
+                if (Program.Settings.AutoShowMainWindow)
                 {
                     this.ForceActivate();
                 }
@@ -360,6 +360,14 @@ namespace Automate
             });
 
             thread.Start();
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            using (SettingsForm form = new SettingsForm())
+            {
+                form.ShowDialog();
+            }
         }
 
         private void pbGitHub_Click(object sender, EventArgs e)
