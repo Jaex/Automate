@@ -172,6 +172,11 @@ namespace Automate
                 IsRunning = true;
                 btnRun.Text = "Stop";
 
+                if (Program.Settings.AutoMinimizeMainWindow)
+                {
+                    WindowState = FormWindowState.Minimized;
+                }
+
                 BackgroundWorker bw = new BackgroundWorker();
                 bw.DoWork += bw_DoWork;
                 bw.RunWorkerCompleted += bw_RunWorkerCompleted;
@@ -229,7 +234,7 @@ namespace Automate
             {
                 btnRun.Text = "Start";
 
-                if (Program.Settings.AutoShowMainWindow)
+                if (Program.Settings.AutoMinimizeMainWindow || Program.Settings.AutoShowMainWindow)
                 {
                     this.ForceActivate();
                 }

@@ -31,6 +31,7 @@ namespace Automate
     public class Settings : SettingsBase<Settings>
     {
         public List<ScriptInfo> Scripts { get; set; } = new List<ScriptInfo>();
+        public bool AutoMinimizeMainWindow { get; set; } = false;
         public bool AutoShowMainWindow { get; set; } = false;
     }
 }
