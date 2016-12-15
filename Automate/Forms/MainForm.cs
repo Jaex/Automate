@@ -228,7 +228,11 @@ namespace Automate
             if (!closing)
             {
                 btnRun.Text = "Start";
-                this.ForceActivate();
+
+                if (Program.Settings.AutoShowMainWindow)
+                {
+                    this.ForceActivate();
+                }
             }
         }
 
