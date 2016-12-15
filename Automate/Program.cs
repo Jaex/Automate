@@ -34,6 +34,18 @@ namespace Automate
         public static readonly string DefaultPersonalFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Automate");
         public static readonly string SettingsFilePath = Path.Combine(DefaultPersonalFolder, "Settings.json");
 
+        public static string Title
+        {
+            get
+            {
+                Version version = Version.Parse(Application.ProductVersion);
+                string title = string.Format("Automate {0}.{1}", version.Major, version.Minor);
+                if (version.Build > 0) title += "." + version.Build;
+                if (version.Revision > 0) title += "." + version.Revision;
+                return title;
+            }
+        }
+
         public static Settings Settings { get; private set; }
         public static GitHubUpdateManager UpdateManager { get; private set; }
 

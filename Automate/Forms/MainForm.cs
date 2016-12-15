@@ -46,6 +46,7 @@ namespace Automate
         public MainForm()
         {
             InitializeComponent();
+            Text = Program.Title;
             Icon = Resources.Icon;
 
             rtbInput.AddContextMenu();
