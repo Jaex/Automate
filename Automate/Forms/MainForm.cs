@@ -55,20 +55,6 @@ namespace Automate
             cbKeys.Items.AddRange(Enum.GetNames(typeof(Keys)).Skip(1).ToArray());
         }
 
-        private void MainForm_Shown(object sender, EventArgs e)
-        {
-            UpdateControls();
-
-            keyboardHook = new KeyboardHook();
-            keyboardHook.KeyDown += KeyboardHook_KeyDown;
-
-#if !DEBUG
-            Program.UpdateManager.ConfigureAutoUpdate();
-#endif
-
-            this.ForceActivate();
-        }
-
         private void UpdateControls()
         {
             if (Program.Settings.Scripts == null)
@@ -108,11 +94,6 @@ namespace Automate
             lvi.SubItems.Add(new HotkeyInfo(scriptInfo.Hotkey).ToString());
             lvi.Tag = scriptInfo;
             lvScripts.Items.Add(lvi);
-        }
-
-        private void rtbInput_TextChanged(object sender, EventArgs e)
-        {
-            Tokenize();
         }
 
         private void Tokenize()
@@ -193,22 +174,9 @@ namespace Automate
             functionManager.Stop();
         }
 
-        private void SetExample()
+        private void LoadExampleScript()
         {
             rtbInput.Text = Resources.ExampleScript;
-        }
-
-        private void ResetFields()
-        {
-            foreach (ListViewItem lvi in lvScripts.SelectedItems)
-            {
-                lvi.Selected = false;
-            }
-
-            txtScriptName.Clear();
-            btnHotkey.Reset();
-            rtbInput.Clear();
-            nudLineDelay.Value = 1;
         }
 
         private void bw_DoWork(object sender, DoWorkEventArgs e)
@@ -246,32 +214,49 @@ namespace Automate
             }
         }
 
-        private void btnRun_Click(object sender, EventArgs e)
+        private void ResetFields()
         {
-            if (IsRunning)
-            {
-                Stop();
-            }
-            else
-            {
-                ScriptInfo scriptInfo = new ScriptInfo()
-                {
-                    Script = rtbInput.Text,
-                    LineDelay = (int)nudLineDelay.Value
-                };
+            txtScriptName.Clear();
+            btnHotkey.Reset();
+            rtbInput.Clear();
+            nudLineDelay.Value = 1;
+        }
 
-                Start(scriptInfo);
-            }
+        #region Form events
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            UpdateControls();
+
+            keyboardHook = new KeyboardHook();
+            keyboardHook.KeyDown += KeyboardHook_KeyDown;
+
+#if !DEBUG
+            Program.UpdateManager.ConfigureAutoUpdate();
+#endif
+
+            this.ForceActivate();
+        }
+
+        private void AutomateForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            closing = true;
+            keyboardHook.Dispose();
+            Stop();
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            ResetFields();
+            ScriptInfo scriptInfo = new ScriptInfo();
+            scriptInfo.Name = "Script";
+            Program.Settings.Scripts.Add(scriptInfo);
+            AddScriptToList(scriptInfo);
+            lvScripts.SelectedIndex = lvScripts.Items.Count - 1;
         }
 
         private void btnLoadExample_Click(object sender, EventArgs e)
         {
-            SetExample();
+            LoadExampleScript();
         }
 
         private void btnSaveScript_Click(object sender, EventArgs e)
@@ -284,26 +269,18 @@ namespace Automate
                 return;
             }
 
-            ScriptInfo scriptInfo = Program.Settings.Scripts.FirstOrDefault(x => x.Name.Equals(scriptName, StringComparison.InvariantCultureIgnoreCase));
-
-            if (scriptInfo != null)
+            if (lvScripts.SelectedItems.Count > 0)
             {
+                ListViewItem lvi = lvScripts.SelectedItems[0];
+                ScriptInfo scriptInfo = lvi.Tag as ScriptInfo;
+
+                scriptInfo.Name = scriptName;
                 scriptInfo.Script = rtbInput.Text;
-                scriptInfo.LineDelay = (int)nudLineDelay.Value;
                 scriptInfo.Hotkey = btnHotkey.HotkeyInfo.Hotkey;
-            }
-            else
-            {
-                scriptInfo = new ScriptInfo()
-                {
-                    Name = scriptName,
-                    Script = rtbInput.Text,
-                    LineDelay = (int)nudLineDelay.Value,
-                    Hotkey = btnHotkey.HotkeyInfo.Hotkey
-                };
+                scriptInfo.LineDelay = (int)nudLineDelay.Value;
 
-                Program.Settings.Scripts.Add(scriptInfo);
-                AddScriptToList(scriptInfo);
+                lvi.Text = scriptInfo.Name;
+                lvi.SubItems[1].Text = new HotkeyInfo(scriptInfo.Hotkey).ToString();
             }
         }
 
@@ -314,14 +291,25 @@ namespace Automate
                 int index = lvScripts.SelectedIndices[0];
                 Program.Settings.Scripts.RemoveAt(index);
                 lvScripts.Items.RemoveAt(index);
-                rtbInput.Clear();
-                txtScriptName.Clear();
+
+                if (lvScripts.Items.Count > 0)
+                {
+                    lvScripts.SelectedIndex = lvScripts.Items.Count - 1;
+                }
+                else
+                {
+                    ResetFields();
+                }
             }
         }
 
         private void lvScripts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lvScripts.SelectedItems.Count > 0)
+            bool selected = lvScripts.SelectedItems.Count > 0;
+
+            btnSaveScript.Enabled = btnRemoveScript.Enabled = selected;
+
+            if (selected)
             {
                 ListViewItem lvi = lvScripts.SelectedItems[0];
                 ScriptInfo scriptInfo = lvi.Tag as ScriptInfo;
@@ -367,6 +355,29 @@ namespace Automate
             thread.Start();
         }
 
+        private void rtbInput_TextChanged(object sender, EventArgs e)
+        {
+            Tokenize();
+        }
+
+        private void btnRun_Click(object sender, EventArgs e)
+        {
+            if (IsRunning)
+            {
+                Stop();
+            }
+            else
+            {
+                ScriptInfo scriptInfo = new ScriptInfo()
+                {
+                    Script = rtbInput.Text,
+                    LineDelay = (int)nudLineDelay.Value
+                };
+
+                Start(scriptInfo);
+            }
+        }
+
         private void btnSettings_Click(object sender, EventArgs e)
         {
             using (SettingsForm form = new SettingsForm())
@@ -380,11 +391,6 @@ namespace Automate
             URLHelpers.OpenURL("https://github.com/Jaex/Automate");
         }
 
-        private void AutomateForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            closing = true;
-            keyboardHook.Dispose();
-            Stop();
-        }
+        #endregion Form events
     }
 }

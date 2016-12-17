@@ -113,7 +113,7 @@
             // lblScriptStartDelayTip
             // 
             this.lblScriptStartDelayTip.AutoSize = true;
-            this.lblScriptStartDelayTip.Location = new System.Drawing.Point(192, 16);
+            this.lblScriptStartDelayTip.Location = new System.Drawing.Point(189, 16);
             this.lblScriptStartDelayTip.Name = "lblScriptStartDelayTip";
             this.lblScriptStartDelayTip.Size = new System.Drawing.Size(20, 13);
             this.lblScriptStartDelayTip.TabIndex = 6;

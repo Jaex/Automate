@@ -30,7 +30,7 @@ namespace Automate
     {
         public string Name { get; set; }
         public string Script { get; set; }
-        public int LineDelay { get; set; }
         public Keys Hotkey { get; set; }
+        public int LineDelay { get; set; }
     }
 }

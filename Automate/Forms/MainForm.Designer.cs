@@ -200,7 +200,7 @@
             // lblLineDelayMiliseconds
             // 
             this.lblLineDelayMiliseconds.AutoSize = true;
-            this.lblLineDelayMiliseconds.Location = new System.Drawing.Point(168, 129);
+            this.lblLineDelayMiliseconds.Location = new System.Drawing.Point(165, 129);
             this.lblLineDelayMiliseconds.Name = "lblLineDelayMiliseconds";
             this.lblLineDelayMiliseconds.Size = new System.Drawing.Size(20, 13);
             this.lblLineDelayMiliseconds.TabIndex = 13;
@@ -250,6 +250,7 @@
             this.lvScripts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chScriptName,
             this.chScriptHotkey});
+            this.lvScripts.DisableDeselect = true;
             this.lvScripts.FullRowSelect = true;
             this.lvScripts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lvScripts.HideSelection = false;
