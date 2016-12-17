@@ -71,6 +71,10 @@ namespace Automate
             {
                 lvScripts.Items[0].Selected = true;
             }
+            else
+            {
+                AddNewScript();
+            }
         }
 
         private void KeyboardHook_KeyDown(object sender, KeyEventArgs e)
@@ -174,11 +178,6 @@ namespace Automate
             functionManager.Stop();
         }
 
-        private void LoadExampleScript()
-        {
-            rtbInput.Text = Resources.ExampleScript;
-        }
-
         private void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             ScriptInfo scriptInfo = e.Argument as ScriptInfo;
@@ -214,12 +213,34 @@ namespace Automate
             }
         }
 
+        private void AddScript(ScriptInfo scriptInfo)
+        {
+            Program.Settings.Scripts.Add(scriptInfo);
+            AddScriptToList(scriptInfo);
+            lvScripts.SelectedIndex = lvScripts.Items.Count - 1;
+        }
+
+        private void AddNewScript()
+        {
+            ScriptInfo scriptInfo = new ScriptInfo();
+            scriptInfo.Name = "Script";
+            AddScript(scriptInfo);
+        }
+
+        private void AddExampleScript()
+        {
+            ScriptInfo scriptInfo = new ScriptInfo();
+            scriptInfo.Name = "Example script";
+            scriptInfo.Script = Resources.ExampleScript;
+            AddScript(scriptInfo);
+        }
+
         private void ResetFields()
         {
             txtScriptName.Clear();
             btnHotkey.Reset();
             rtbInput.Clear();
-            nudLineDelay.Value = 1;
+            nudLineDelay.Value = 0;
         }
 
         #region Form events
@@ -245,32 +266,28 @@ namespace Automate
             Stop();
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
+        private void btnAddNewScript_Click(object sender, EventArgs e)
         {
-            ScriptInfo scriptInfo = new ScriptInfo();
-            scriptInfo.Name = "Script";
-            Program.Settings.Scripts.Add(scriptInfo);
-            AddScriptToList(scriptInfo);
-            lvScripts.SelectedIndex = lvScripts.Items.Count - 1;
+            AddNewScript();
         }
 
-        private void btnLoadExample_Click(object sender, EventArgs e)
+        private void btnAddExampleScript_Click(object sender, EventArgs e)
         {
-            LoadExampleScript();
+            AddExampleScript();
         }
 
-        private void btnSaveScript_Click(object sender, EventArgs e)
+        private void btnUpdateScript_Click(object sender, EventArgs e)
         {
-            string scriptName = txtScriptName.Text;
-
-            if (string.IsNullOrEmpty(scriptName))
-            {
-                MessageBox.Show("Script name can't be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             if (lvScripts.SelectedItems.Count > 0)
             {
+                string scriptName = txtScriptName.Text;
+
+                if (string.IsNullOrEmpty(scriptName))
+                {
+                    MessageBox.Show("Script name can't be empty.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 ListViewItem lvi = lvScripts.SelectedItems[0];
                 ScriptInfo scriptInfo = lvi.Tag as ScriptInfo;
 
@@ -307,7 +324,7 @@ namespace Automate
         {
             bool selected = lvScripts.SelectedItems.Count > 0;
 
-            btnSaveScript.Enabled = btnRemoveScript.Enabled = selected;
+            btnUpdateScript.Enabled = btnRemoveScript.Enabled = selected;
 
             if (selected)
             {
@@ -320,6 +337,10 @@ namespace Automate
                     rtbInput.Text = scriptInfo.Script;
                     nudLineDelay.SetValue(scriptInfo.LineDelay);
                 }
+            }
+            else
+            {
+                ResetFields();
             }
         }
 
